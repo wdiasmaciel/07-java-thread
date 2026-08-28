@@ -3,7 +3,7 @@ import java.util.concurrent.locks.ReentrantLock;
 public class ContaBancaria {
     private int saldo = 0;
 
-    // Cria o Mutex (cadeado de exclusão mútua)
+    // Cria o Mutex (cadeado de exclusão mútua):
     private final ReentrantLock mutex = new ReentrantLock();
 
     public ContaBancaria(int saldo){
@@ -18,11 +18,11 @@ public class ContaBancaria {
         
         try {
             // --- INÍCIO DA REGIÃO CRÍTICA ---
-            // Apenas UMA thread por vez consegue executar este bloco de código
+            // Apenas UMA thread por vez consegue executar este bloco de código.
             if (saldo >= valor) {
                 System.out.println(nomeThread + " verificou o saldo: R$" + saldo);
                 
-                // Simula uma pequena demora no processamento do saque
+                // Simula uma pequena demora no processamento do saque:
                 Thread.sleep(500); 
                 
                 saldo -= valor;
@@ -34,8 +34,8 @@ public class ContaBancaria {
         } catch (InterruptedException e) {
             e.printStackTrace();
         } finally {
-            // Obrigatoriamente destranca o Mutex no bloco 'finally'
-            // Isso garante que a chave seja liberada mesmo se ocorrer um erro no try
+            // Obrigatoriamente destranca o Mutex no bloco 'finally'.
+            // Isso garante que a chave seja liberada mesmo se ocorrer um erro no try.
             mutex.unlock(); 
             System.out.println(nomeThread + " liberou o Mutex.");
         }
