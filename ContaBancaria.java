@@ -1,10 +1,14 @@
 import java.util.concurrent.locks.ReentrantLock;
 
 public class ContaBancaria {
-    private int saldo = 100;
-    
+    private int saldo = 0;
+
     // Cria o Mutex (cadeado de exclusão mútua)
     private final ReentrantLock mutex = new ReentrantLock();
+
+    public ContaBancaria(int saldo){
+        this.saldo = saldo;
+    }
 
     public void sacar(String nomeThread, int valor) {
         System.out.println(nomeThread + " está tentando sacar R$" + valor);
