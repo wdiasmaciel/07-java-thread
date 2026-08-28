@@ -36,3 +36,13 @@ Imagine duas threads tentando sacar R$ 70 da mesma conta corrente (saldo de R$ 1
 - Sem Seção Crítica Protegida: ambas leem o saldo como R$ 100, ambas aprovam o saque e o saldo final vira R$ -40 (um prejuízo para o banco, pois R$ 140 foram retirados).
 
 - Com Seção Crítica Protegida: a primeira thread tranca a conta, lê o saldo, faz o saque e atualiza para R$ 30. Só então a segunda thread entra, vê o saldo como R$ 30 e o saque é negado.
+
+# Comandos
+
+```bash
+javac *.java
+```
+
+```bash
+java Main
+```
